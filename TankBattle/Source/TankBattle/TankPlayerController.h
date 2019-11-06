@@ -18,16 +18,25 @@ class TANKBATTLE_API ATankPlayerController : public APlayerController
 	
 
 public:
-	ATank* GetControlledTank() const;
 
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	ATank* GetControlledTank() const;
+
 	// Start moving tank barrel so for shot hit intersects world
 	void AimToCrosshair();
 
-private:
 	//return OUT para, true if it
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrossX = 0.5;
+
+	UPROPERTY(EditAnywhere)
+	float CrossY = 0.33333;
+
+	bool GetLookDirection(FVector2D CrossLocation, FVector& LookDirection) const;
 };
