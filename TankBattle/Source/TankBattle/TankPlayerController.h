@@ -6,6 +6,7 @@
 #include "TankBattle.h"
 #include "GameFramework/PlayerController.h"
 #include "Tank.h"
+#include "Engine/World.h"
 #include "TankPlayerController.generated.h" //must be last header
 
 /**
@@ -38,5 +39,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	float CrossY = 0.33333;
 
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000;
+
 	bool GetLookDirection(FVector2D CrossLocation, FVector& LookDirection) const;
+
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
 };
